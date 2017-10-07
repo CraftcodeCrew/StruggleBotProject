@@ -117,9 +117,11 @@
     <Compile Include="Dialogs\Habits\BreakfastDialog.cs" />
     <Compile Include="Dialogs\Habits\DinnerDialog.cs" />
     <Compile Include="Dialogs\Habits\LunchDialog.cs" />
+    <Compile Include="Dialogs\Intelligence\NameDialog.cs" />
     <Compile Include="Dialogs\ProfileSubmitDialog.cs" />
     <Compile Include="Dialogs\Habits\SleepScheduleDialog.cs" />
     <Compile Include="Dialogs\InitDialog.cs" />
+    <Compile Include="Dialogs\Intelligence\WelcomeLuisDialog.cs" />
     <Compile Include="Dialogs\RootDialog.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

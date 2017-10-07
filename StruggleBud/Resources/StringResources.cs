@@ -15,6 +15,8 @@ namespace StruggleBud.Resources
             ;
 
         public static string WelcomeMessage3(string name) => $"Hallo, {name} ch habe noch keinen Studienplan von dirfür dich. Soll ich einen anlegen?";
-        
+
+        public const string Unkown = "Sorry, das habe ich nicht verstanden"
+            ;
     }
 }
