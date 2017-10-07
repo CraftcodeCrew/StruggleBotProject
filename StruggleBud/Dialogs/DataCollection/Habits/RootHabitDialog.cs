@@ -20,6 +20,12 @@ namespace StruggleBud.Dialogs.DataCollection
 
         private Task StartLunchDataCollectionAsync(IDialogContext context, IAwaitable<object> result)
         {
+            context.Call(new LunchDialog(), this.StartDinnerDataCollectionAsync);
+            return Task.CompletedTask;
+        }
+
+        private Task StartDinnerDataCollectionAsync(IDialogContext context, IAwaitable<object> result)
+        {
             context.Done(true);
             return Task.CompletedTask;
         }

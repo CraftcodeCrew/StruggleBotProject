@@ -9,6 +9,8 @@ namespace StruggleBud.Resources
     {
 
         public const string BreakFastKey = "breakfast";
+        public const string LunchKey = "lunch";
+
 
     }
 }
