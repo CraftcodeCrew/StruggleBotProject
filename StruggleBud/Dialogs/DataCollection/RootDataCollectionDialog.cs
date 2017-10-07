@@ -14,9 +14,16 @@ namespace StruggleBud.Dialogs.DataCollection
     {
         public Task StartAsync(IDialogContext context)
         {
-            context.Wait(this.StartHabitDataCollectionAsync);
+
+            context.Call(new StruggleBud.Dialogs.DataCollection.Calendar.CalendarDataCollectorDialog(), this.CalenderDataCollectionCompletedAsync);
 
             return Task.CompletedTask;
+        }
+
+        private async Task CalenderDataCollectionCompletedAsync(IDialogContext context, IAwaitable<object> result)
+        {
+            await StartHabitDataCollectionAsync(context, result);
+
         }
 
         private async Task StartHabitDataCollectionAsync(IDialogContext context, IAwaitable<object> result)
@@ -28,7 +35,8 @@ namespace StruggleBud.Dialogs.DataCollection
 
         private Task StartLunchDataCollectionAsync(IDialogContext context, IAwaitable<object> result)
         {
-            throw new NotImplementedException();
+            context.Done(true);
+            return Task.CompletedTask;
         }
     }
 }

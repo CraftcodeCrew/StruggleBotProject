@@ -14,21 +14,14 @@ namespace StruggleBud.Dialogs.DataCollection
     {
         public Task StartAsync(IDialogContext context)
         {
-            context.Wait(this.StartBreakfastDataCollectionAsync);
-
+            context.Call(new BreakfastDialog(), this.StartLunchDataCollectionAsync);
             return Task.CompletedTask;
         }
 
-        private async Task StartBreakfastDataCollectionAsync(IDialogContext context, IAwaitable<object> result)
+        private Task StartLunchDataCollectionAsync(IDialogContext context, IAwaitable<object> result)
         {
-            await context.PostAsync(StringResources.BreakfastTimeBlockerMessage);
-
-            context.Call(new BreakfastDialog(), this.StartLunchDataCollectionAsync);
-        }
-
-        private async Task StartLunchDataCollectionAsync(IDialogContext context, IAwaitable<object> result)
-        {
-            throw new NotImplementedException();
+            context.Done(true);
+            return Task.CompletedTask;
         }
     }
 }

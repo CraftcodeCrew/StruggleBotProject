@@ -15,13 +15,13 @@ namespace StruggleBud.Dialogs.DataCollection.Calendar
     {
         public async Task StartAsync(IDialogContext context)
         {
-            context.PostAsync(StringResources.CalenderAccess);
+            await context.PostAsync(StringResources.CalenderAccess);
 
             var calenderApiAccess = true;
 
             if (calenderApiAccess == false)
             {
-                context.PostAsync(StringResources.CalenderAccessFailed);
+                await context.PostAsync(StringResources.CalenderAccessFailed);
                 await this.StartAsync(context);
             }
             else

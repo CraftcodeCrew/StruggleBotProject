@@ -54,15 +54,18 @@ namespace StruggleBud.Dialogs
                 switch (selection)
                 {
                     case "Ja":
-                        await context.PostAsync("This functionality is not yet implemented! Try resetting your password.");
-                        await this.StartAsync(context);
+                    await this.NavigateToDataCollection(context, result);
                         break;
 
                     case "Nein":
-                        context.Call(new CreationAbortDialog(), this.AfterUserHasBeenAskForCreation);
+                        context.Call(new CreationAbortDialog(), this.NavigateToDataCollection);
                         break;
                 }
-          
+        }
+
+        private async Task NavigateToDataCollection(IDialogContext context, IAwaitable<object> result)
+        {
+            context.Call(new StruggleBud.Dialogs.DataCollection.RootDataCollectionDialog(), this.WelcomeMessageReceivedAsync);
         }
 
     }

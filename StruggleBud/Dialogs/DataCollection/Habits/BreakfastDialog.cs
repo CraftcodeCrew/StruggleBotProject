@@ -12,11 +12,9 @@ namespace StruggleBud.Dialogs.Habits
     [Serializable]
     public class BreakfastDialog : IDialog<object>
     {
-        public Task StartAsync(IDialogContext context)
+        public async Task StartAsync(IDialogContext context)
         {
-            context.Wait(this.BreakfastTimeSelectorAsync);
-
-            return Task.CompletedTask;
+            await this.BreakfastTimeSelectorAsync(context, null);
         }
 
         private async Task BreakfastTimeSelectorAsync(IDialogContext context, IAwaitable<object> result)
@@ -32,6 +30,7 @@ namespace StruggleBud.Dialogs.Habits
 
         private async Task BreakfastTimeReceivedAsync(IDialogContext context, IAwaitable<object> result)
         {
+            
             var selection = await result;
 
             switch (selection)
@@ -51,11 +50,12 @@ namespace StruggleBud.Dialogs.Habits
                 case SelectorConstants.BreakfastSelector5:
                     break;
                 case SelectorConstants.BreakfastSelector6:
-                    throw new NotImplementedException();
-                    break;
+                    context.Done(true);
+                    break;                  
 
-                default: throw new NotImplementedException();
-                
+                default:
+                    context.Done(true);
+                    break;
               
             }
             context.Done(true);

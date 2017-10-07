@@ -26,6 +26,8 @@ namespace StruggleBud.Resources
         public const string CalenderAccess =
                 "Damit ich dir wirklich helfen kann, benötige ich Zugriff auf deinen Kalender. Klicke  dafür einfach auf folgenden Link und erteile mir deine Erlaubnis"
             ;
+        public const string CalenderAccessFailed = "Irgendwas ist schiefgelaufen. Kannst du es normal versuchen?"
+            ;
 
         public const string TimeBlockerMessage1 = "Du willst ja nicht immer lernen, oder? Lass uns zunächst deine täglichen Mahlzeiten eintragen.";
         public const string BreakfastTimeBlockerMessage = "Das Frühstück ist die wichtigste Mahlzeit des Tages. Um wieviel Uhr frühstückst du normalerweise?";
