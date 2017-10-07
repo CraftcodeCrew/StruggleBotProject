@@ -42,7 +42,7 @@ namespace StruggleBud.Dialogs.Habits
                     context.UserData.SetValue(UserData.LunchKey, selection);
                     break;
                 case SelectorConstants.LunchSelesctor4:
-                    await context.PostAsync(StringResources.NoTime);
+                    context.UserData.SetValue(UserData.LunchKey, string.Empty);
                     break;
                 case SelectorConstants.LunchSelesctor5:
                     context.Done(true);
@@ -54,17 +54,22 @@ namespace StruggleBud.Dialogs.Habits
 
         private async Task AskUserForConfirmation(IDialogContext context, string time)
         {
+            var question = StringResources.LunchConfirmationMessage(time);
+            if (string.IsNullOrEmpty(time))
+            {
+                question = StringResources.NoLunchMessage;
+            }
+
             PromptDialog.Choice(
                 context,
                 this.SelectionReceivedAsync,
                 new[] {"Ja", "Nein"},
-                StringResources.LunchConfirmationMessage(time),
+                question,
                 StringResources.Unkown);
         }
 
         private async Task SelectionReceivedAsync(IDialogContext context, IAwaitable<object> result)
         {
-
             var selection = await result;
             switch (selection)
             {

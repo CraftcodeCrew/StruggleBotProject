@@ -49,8 +49,7 @@ namespace StruggleBud.Dialogs.Habits
                     context.UserData.SetValue(UserData.BreakFastKey, selection);
                     break;
                 case SelectorConstants.BreakfastSelector5:
-                    //TODO user output
-                    context.UserData.SetValue(UserData.BreakFastKey, selection);
+                    context.UserData.SetValue(UserData.BreakFastKey, string.Empty);
                     break;
                 case SelectorConstants.BreakfastSelector6:
                     await CallBreakFastLuisDialogAsync(context, result);
@@ -75,11 +74,17 @@ namespace StruggleBud.Dialogs.Habits
 
         private async Task AskUserForConfirmation(IDialogContext context, string time)
         {
+            var question = StringResources.BreakfastTimeSetMessage(time);
+            if (string.IsNullOrEmpty(time))
+            {
+                question = StringResources.NoBreakfastMessage;
+            }
+
             PromptDialog.Choice(
                 context,
                 this.SelectionReceivedAsync,
                 new[] { "Ja", "Nein" },
-                StringResources.BreakfastTimeSetMessage(time),
+                question,
                 StringResources.Unkown);
         }
 
