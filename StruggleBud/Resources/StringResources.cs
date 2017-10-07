@@ -36,5 +36,15 @@ namespace StruggleBud.Resources
         public const string BreakfastTimeSetMessage = "Der frühe Vogel fängt den Wurm. Ich blocke dir dann von (%d) bis (%d+1h) Uhr für dein Frühstück.Ist das OK so?";
         public const string BreakfastConfirmationMessage = "Top! Weiter geht’s :-)";
 
+        public const string LaunchWelcomeMessage = "Morgens wie ein Kaiser, mittags wie ein König, abends wie ein Bauer. Zu welcher Uhrzeit isst du dein Mittagessen?";
+
+        public const string LunchDoneMessage = "Top! Weiter geht’s :-)";
+
+        public static string LunchConfirmationMessage(string time) =>
+            $"Danke, ich notiere dir deine Mittagspause für {time} Uhr. Ist das OK so?";
+
+        public const string DinnerWelcomeMessage = "Für wann soll ich dir dein Abendessen am Besten einplanen?";
+
+        public const string NoTime = "Alles klar, dann halt nicht...das spart ordentlich Zeit";
     }
 }
