@@ -66,12 +66,12 @@ namespace StruggleBud.Dialogs.Habits
 
         private async Task AskUserForConfirmation(IDialogContext context, string time)
         {
-            Debug.WriteLine("wtf dude");
             var question = StringResources.SleepConfirmationMessage(time);
             if (string.IsNullOrEmpty(time))
             {
                 await context.PostAsync(StringResources.NoSleepMessage);
                 await this.StartAsync(context);
+                return;
             }
 
             PromptDialog.Choice(

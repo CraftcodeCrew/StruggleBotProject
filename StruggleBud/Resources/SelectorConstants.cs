@@ -38,8 +38,17 @@ namespace StruggleBud.Resources
         public const String ExamDurationSelector3 = "20h";
         public const String ExamDurationSelector4 = "Manuelle Texteingabe";
 
+        public const String DateFallBackSelectio1 = "Datum manuell eingeben";
+        public const String DateFallBackSelectio2 = "Erneut Versuchen";
 
+        public const String SubjectFallBackSelectio1 = "Fach manuell eingeben";
+        public const String SubjectFallBackSelectio2 = "Erneut Versuchen";
 
+        public const String PowerFallBackSelectio1 = "Lernzeit manuell eingeben";
+        public const String PowerFallBackSelectio2 = "Erneut Versuchen";
+
+        public const String DurationFallBackSelectio1 = "Tägliche Lerndauer manuell eingeben";
+        public const String DurationFallBackSelectio2 = "Erneut Versuchen";
 
     }
 }

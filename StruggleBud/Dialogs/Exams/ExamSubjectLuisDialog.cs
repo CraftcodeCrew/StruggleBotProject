@@ -1,5 +1,6 @@
 ﻿using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Builder.Luis;
+using StruggleBud.Dialogs.Exams;
 using StruggleBud.Resources;
 using System;
 using System.Collections.Generic;
@@ -25,7 +26,8 @@ namespace StruggleBud.Dialogs.DataCollection.Habits
             catch (Exception)
             {
 
-                subject = "Unbekannte Klausur";
+                await SwitchToFallback(context);
+                return;
             }
             var list = new List<string>();
 
@@ -45,10 +47,42 @@ namespace StruggleBud.Dialogs.DataCollection.Habits
           
         }
 
+        private async Task SwitchToFallback(IDialogContext context)
+        {
+            PromptDialog.Choice(
+              context,
+              this.FallbackSelected,
+              new[] { SelectorConstants.SubjectFallBackSelectio1, SelectorConstants.SubjectFallBackSelectio2 },
+              StringResources.FallbackMessage,
+              StringResources.Unkown);
+            await context.PostAsync(StringResources.CalenderAccessFailed);
+        }
+
+        private async Task FallbackSelected(IDialogContext context, IAwaitable<object> result)
+        {
+            var selector = await result;
+
+            switch (selector)
+            {
+                case SelectorConstants.SubjectFallBackSelectio1:
+                    context.Call(new ExamSubjectFallbackDialog(), this.Complete);
+                    break;
+                case SelectorConstants.SubjectFallBackSelectio2:
+                    await context.PostAsync(StringResources.FallbackSkio);
+                    break;
+            }
+        }
+
+        private Task Complete(IDialogContext context, IAwaitable<object> result)
+        {
+            context.Done(true);
+            return Task.CompletedTask;
+        }
+
         [LuisIntent("")]
         private async Task AbortAsync(IDialogContext context, IAwaitable<object> result, Microsoft.Bot.Builder.Luis.Models.LuisResult luisResult)
         {
-            await context.PostAsync(StringResources.CalenderAccessFailed);
+            await SwitchToFallback(context);
         }
 
     }

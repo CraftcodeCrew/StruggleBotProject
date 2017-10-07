@@ -124,6 +124,10 @@
     <Compile Include="Dialogs\DataCollection\Habits\RootHabitDialog.cs" />
     <Compile Include="Dialogs\DataCollection\Habits\SleepLuisDialog.cs" />
     <Compile Include="Dialogs\DataCollection\RootDataCollectionDialog.cs" />
+    <Compile Include="Dialogs\Exams\ExamDurationFallbackDialog.cs" />
+    <Compile Include="Dialogs\Exams\ExamPowerFallbackDialog.cs" />
+    <Compile Include="Dialogs\Exams\ExamSubjectFallbackDialog.cs" />
+    <Compile Include="Dialogs\Exams\ExamDateFallbackDialog.cs" />
     <Compile Include="Dialogs\Exams\ExamDataCollectorDialog.cs" />
     <Compile Include="Dialogs\Exams\ExamDurationLuisDialog.cs" />
     <Compile Include="Dialogs\Exams\ExamPowerLuisDialog.cs" />

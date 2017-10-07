@@ -1,5 +1,6 @@
 ﻿using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Builder.Luis;
+using StruggleBud.Dialogs.Exams;
 using StruggleBud.Resources;
 using System;
 using System.Collections.Generic;
@@ -26,10 +27,8 @@ namespace StruggleBud.Dialogs.DataCollection.Habits
              list = context.UserData.GetValue<List<string>>(UserData.ExamDates);
             } catch(Exception)
             {
-
+                //ignored
             }
-
-
 
             list.Add(date);
             context.UserData.SetValue<List<string>>(UserData.ExamDates, list);
@@ -41,8 +40,34 @@ namespace StruggleBud.Dialogs.DataCollection.Habits
         [LuisIntent("")]
         private async Task AbortAsync(IDialogContext context, IAwaitable<object> result, Microsoft.Bot.Builder.Luis.Models.LuisResult luisResult)
         {
+             PromptDialog.Choice(
+               context,
+               this.FallbackSelected,
+               new[] { SelectorConstants.DateFallBackSelectio1, SelectorConstants.DateFallBackSelectio2},
+               StringResources.FallbackMessage,
+               StringResources.Unkown);
             await context.PostAsync(StringResources.CalenderAccessFailed);
         }
 
+        private async Task FallbackSelected(IDialogContext context, IAwaitable<object> result)
+        {
+            var selector = await result;
+
+            switch (selector)
+            {
+                case SelectorConstants.DateFallBackSelectio1:
+                    context.Call(new ExamDateFallbackDialog(), this.Complete);
+                    break;
+                case SelectorConstants.DateFallBackSelectio2:
+                    await context.PostAsync(StringResources.FallbackSkio);
+                    break;
+            }
+        }
+
+        private Task Complete(IDialogContext context, IAwaitable<object> result)
+        {
+            context.Done(true);
+            return Task.CompletedTask;
+        }
     }
 }

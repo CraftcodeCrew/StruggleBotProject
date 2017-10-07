@@ -84,5 +84,9 @@ namespace StruggleBud.Resources
         public const string ExamLoop9 = "Dude!, dann eben nochmal von vorne!";
 
         public const string ExamReenterLoop = "Hast du noch mehr Prüfungen, von denen du mir erzählen solltest?";
+
+        public const string FallbackSkio = "Okay mate! Versuche es nocheinmal";
+
+        public const string FallbackMessage = "Mate, das ist übel... Willst du es vlt. nochmal versuchen";
     }
 }

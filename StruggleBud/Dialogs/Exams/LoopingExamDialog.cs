@@ -36,7 +36,7 @@ namespace StruggleBud.Dialogs.Exams
             context.Call(new ExamPowerLuisDialog(), this.AskUserForLearnDuration);
         }
 
-        private async Task AskUserForLearnDuration(IDialogContext context, IAwaitable<object> result)
+        private Task AskUserForLearnDuration(IDialogContext context, IAwaitable<object> result)
         {
             PromptDialog.Choice(
                context,
@@ -45,6 +45,8 @@ namespace StruggleBud.Dialogs.Exams
                           SelectorConstants.LunchSelesctor5},
                StringResources.ExamLoop6,
                StringResources.Unkown);
+
+            return Task.CompletedTask;
         }
 
         private async Task ExamDurationPicked(IDialogContext context, IAwaitable<object> result)
