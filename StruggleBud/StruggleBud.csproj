@@ -125,7 +125,11 @@
     <Compile Include="Dialogs\DataCollection\Habits\SleepLuisDialog.cs" />
     <Compile Include="Dialogs\DataCollection\RootDataCollectionDialog.cs" />
     <Compile Include="Dialogs\Exams\ExamDataCollectorDialog.cs" />
+    <Compile Include="Dialogs\Exams\ExamDurationLuisDialog.cs" />
+    <Compile Include="Dialogs\Exams\ExamPowerLuisDialog.cs" />
+    <Compile Include="Dialogs\Exams\ExamSubjectLuisDialog.cs" />
     <Compile Include="Dialogs\Exams\LoopingExamDialog.cs" />
+    <Compile Include="Dialogs\Exams\ExamDateLuisDialog.cs" />
     <Compile Include="Dialogs\ReusableDialogs\CreationAbortDialog.cs" />
     <Compile Include="Dialogs\Intelligence\NameDialog.cs" />
     <Compile Include="Dialogs\DataCollection\Habits\SleepScheduleDialog.cs" />
@@ -138,6 +142,7 @@
     <Compile Include="Resources\SelectorConstants.cs" />
     <Compile Include="Resources\StringResources.cs" />
     <Compile Include="Resources\UserData.cs" />
+    <Compile Include="Utility\UserDataUtility.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">

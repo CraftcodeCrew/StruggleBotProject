@@ -65,7 +65,12 @@ namespace StruggleBud.Dialogs
 
         private async Task NavigateToDataCollection(IDialogContext context, IAwaitable<object> result)
         {
-            context.Call(new StruggleBud.Dialogs.DataCollection.RootDataCollectionDialog(), this.WelcomeMessageReceivedAsync);
+            context.Call(new StruggleBud.Dialogs.DataCollection.RootDataCollectionDialog(), this.NavigateToExamCollection);
+        }
+
+        private async Task NavigateToExamCollection(IDialogContext context, IAwaitable<object> result)
+        {
+            context.Call(new StruggleBud.Dialogs.Exams.ExamDataCollectorDialog(), this.WelcomeMessageReceivedAsync);
         }
 
     }

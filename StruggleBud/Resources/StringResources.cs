@@ -7,20 +7,13 @@ namespace StruggleBud.Resources
 {
     public class StringResources
     {
-        public const string WelcomeMessage1 =
-                "Hi! Ich freue mich, dass du zu mir gefunden hast. Ich bin dein StruggleBud und unterstütze dich bei deiner persönlichen Lernvorbereitung."
-           ;
-
-        public const string WelcomeMessage2 = "Damit ich dich in Zukunft richtig anspreche brauche ich deinen Namen. Wie heißt du?"
-            ;
-
+        public const string WelcomeMessage1 = "Hi! Ich freue mich, dass du zu mir gefunden hast. Ich bin dein StruggleBud und unterstütze dich bei deiner persönlichen Lernvorbereitung.";
+        public const string WelcomeMessage2 = "Damit ich dich in Zukunft richtig anspreche brauche ich deinen Namen. Wie heißt du?";
         public static string WelcomeMessage3(string name) => $"Hallo, {name} ich habe noch keinen Studienplan von für dich. Soll ich einen anlegen?";
 
-        public const string Unkown = "Sorry, das habe ich nicht verstanden"
-            ;
+        public const string Unkown = "Sorry, das habe ich nicht verstanden";
 
         public const string CreationAboard1 = "Wie kann ich dir sonst weiterhelfen?";
-
         public const string CreationAboard2 = "Kannste knicken! Willst du jetzt einen Studienplan anlegen?";
 
         public const string CalenderAccess =
@@ -71,5 +64,25 @@ namespace StruggleBud.Resources
 
         public static string FinishWelcomeMessage(string name) =>
             $"Okay {name}, wir haben den nervigen Teil Erledigt!. Hier nocheinmal eine Zusammenfassung:";
+
+
+        public const string ExamWelcomeMessage = "Wollen wir zusammen deine Lernzeiten planen?";
+        public const string ExamLoopBeginMessage = "Dann können wir ja starten. Lass uns durch deine Prüfungen gehen.";
+
+        public const string ExamLoop1 = "Wann ist deine Prüfung?";
+        public static string ExamLoop2(string date) => $"Ok am {date}. Für welches Fach oder mit welchem Thema?";
+        public static string ExamLoop3(string examTopic) => $"Ok du schreibst {examTopic}.";
+        public const string ExamLoop4 = "Circa wieviel Stunden solltest du dafür insgesamt lernen?";
+        public const string ExamLoop5 = "Das sollte passen!";
+
+        public const string ExamLoop6 = "Ich nehme an dein Lerntempo ist 10 Stunden pro Woche. Oder wie viel ist dir lieber?";
+
+        public static string ExamLoop7(string date, string power, string subject, string duration) => $"Also du hast am {date} deine {subject}-Prüfung, dafür solltest du circa {power}h Stunden lernen und willst dich mit {duration} Stunden pro Woche darauf vorbereiten. Richtig?";
+
+        public const string ExamLoop8 = "Okay das merke ich mir!";
+
+        public const string ExamLoop9 = "Dude!, dann eben nochmal von vorne!";
+
+        public const string ExamReenterLoop = "Hast du noch mehr Prüfungen, von denen du mir erzählen solltest?";
     }
 }

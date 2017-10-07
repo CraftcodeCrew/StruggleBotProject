@@ -33,6 +33,11 @@ namespace StruggleBud.Resources
         public const String SleepSelesctor4 = "Gar nicht";
         public const String SleepSelesctor5 = "Manuelle Texteingabe";
 
+        public const String ExamDurationSelector1 = "Ja";
+        public const String ExamDurationSelector2 = "5h";
+        public const String ExamDurationSelector3 = "20h";
+        public const String ExamDurationSelector4 = "Manuelle Texteingabe";
+
 
 
 

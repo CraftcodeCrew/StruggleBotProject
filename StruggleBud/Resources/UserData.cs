@@ -14,6 +14,12 @@ namespace StruggleBud.Resources
         public const string NameKey = "name";
         public const string SleepKey = "sleep";
 
+        public const string ExamDates = "dates";
+        public const string ExamSubjects = "subjects";
+        public const string ExamPowers = "powers";
+
+        public const string ExamDurations = "duration";
+
 
     }
 }
