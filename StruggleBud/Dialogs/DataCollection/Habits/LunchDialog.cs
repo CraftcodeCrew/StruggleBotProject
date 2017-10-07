@@ -11,6 +11,7 @@ namespace StruggleBud.Dialogs.Habits
 
     using StruggleBud.Resources;
 
+    [Serializable]
     public class LunchDialog : IDialog<object>
     {
         public async Task StartAsync(IDialogContext context)

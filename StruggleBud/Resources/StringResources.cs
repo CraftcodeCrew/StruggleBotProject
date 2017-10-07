@@ -33,8 +33,9 @@ namespace StruggleBud.Resources
         public const string BreakfastTimeBlockerMessage = "Das Frühstück ist die wichtigste Mahlzeit des Tages. Um wieviel Uhr frühstückst du normalerweise?";
         public const string InvalidBreakfastMessage = "Das habe ich nicht ganz verstanden. Schreib am Besten die Uhrzeit in dem Format hh:mm, oder nutze einfach eine unserer Antwortmöglichkeiten.";
         public const string NoBreakfastMessage = "Alles klar, dann halt nicht...das spart ordentlich Zeit.";
-        public const string BreakfastTimeSetMessage = "Der frühe Vogel fängt den Wurm. Ich blocke dir dann von (%d) bis (%d+1h) Uhr für dein Frühstück.Ist das OK so?";
+        public static string BreakfastTimeSetMessage(string time) => $"Der frühe Vogel fängt den Wurm. Ich blocke dir 1 Stunde ab {time} Uhr für dein Frühstück.Ist das OK so?";
         public const string BreakfastConfirmationMessage = "Top! Weiter geht’s :-)";
+
 
         public const string LaunchWelcomeMessage = "Morgens wie ein Kaiser, mittags wie ein König, abends wie ein Bauer. Zu welcher Uhrzeit isst du dein Mittagessen?";
 

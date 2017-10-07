@@ -54,25 +54,49 @@ namespace StruggleBud.Dialogs.Habits
                     break;
                 case SelectorConstants.BreakfastSelector6:
                     await CallBreakFastLuisDialogAsync(context, result);
-                    break;                 
+                    return;                 
               
             }
-            context.Done(true);
+            await AskUserForConfirmation(context, context.UserData.GetValue<string>(UserData.BreakFastKey));
         }
 
         private Task CallBreakFastLuisDialogAsync(IDialogContext context, IAwaitable<object> result)
         {
-            context.Call(new BreakfastLuisDialog(), this.BreakFastDoneAsync);
+            context.Call(new BreakfastLuisDialog(), this.SmartBreakfastFinishedAsync);
             return Task.CompletedTask;
-            
+
         }
 
-        private Task BreakFastDoneAsync(IDialogContext context, IAwaitable<object> result)
+        private async Task SmartBreakfastFinishedAsync(IDialogContext context, IAwaitable<object> result)
         {
-            context.PostAsync(StringResources.BreakfastTimeSetMessage);
-            context.PostAsync(StringResources.BreakfastConfirmationMessage);
-            context.Done(true);
-            return Task.CompletedTask;
+            await AskUserForConfirmation(context, context.UserData.GetValue<string>(UserData.BreakFastKey));
+        }
+
+
+        private async Task AskUserForConfirmation(IDialogContext context, string time)
+        {
+            PromptDialog.Choice(
+                context,
+                this.SelectionReceivedAsync,
+                new[] { "Ja", "Nein" },
+                StringResources.BreakfastTimeSetMessage(time),
+                StringResources.Unkown);
+        }
+
+        private async Task SelectionReceivedAsync(IDialogContext context, IAwaitable<object> result)
+        {
+
+            var selection = await result;
+            switch (selection)
+            {
+                case "Ja":
+                    await context.PostAsync(StringResources.BreakfastConfirmationMessage);
+                    context.Done(true);
+                    break;
+                case "Nein":
+                    await this.StartAsync(context);
+                    break;
+            }
         }
     }
 }
