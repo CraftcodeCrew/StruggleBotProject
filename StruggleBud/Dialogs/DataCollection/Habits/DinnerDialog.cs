@@ -12,6 +12,7 @@ namespace StruggleBud.Dialogs.Habits
     using StruggleBud.Dialogs.DataCollection.Habits;
     using StruggleBud.Resources;
 
+    [Serializable]
     public class DinnerDialog : IDialog<object>
     {
         public Task StartAsync(IDialogContext context)
@@ -47,7 +48,7 @@ namespace StruggleBud.Dialogs.Habits
                     break;
                 case SelectorConstants.DinnerSelesctor5:
                     await this.CallDinnerLuisDialogAsync(context);
-                    break;
+                    return;
             }
 
             await AskUserForConfirmation(context, context.UserData.GetValue<string>(UserData.DinnerKey));
@@ -97,5 +98,4 @@ namespace StruggleBud.Dialogs.Habits
         }
     }
 
-}
 }

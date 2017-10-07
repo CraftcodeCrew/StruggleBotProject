@@ -47,7 +47,7 @@ namespace StruggleBud.Dialogs.Habits
                     break;
                 case SelectorConstants.LunchSelesctor5:
                     await CallLunchLuisDialogAsync(context);
-                    break;
+                    return;
             }
 
             await AskUserForConfirmation(context, context.UserData.GetValue<string>(UserData.LunchKey));
@@ -55,7 +55,7 @@ namespace StruggleBud.Dialogs.Habits
 
         private async Task SmartLunchFinishedAsync(IDialogContext context, IAwaitable<object> result)
         {
-            await AskUserForConfirmation(context, context.UserData.GetValue<string>(UserData.BreakFastKey));
+            await AskUserForConfirmation(context, context.UserData.GetValue<string>(UserData.LunchKey));
         }
 
         private Task CallLunchLuisDialogAsync(IDialogContext context)
