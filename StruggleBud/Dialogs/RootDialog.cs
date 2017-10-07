@@ -8,9 +8,11 @@ namespace StruggleBud.Dialogs
     using System.Collections.Generic;
 
     using StruggleBud.Resources;
+    using Microsoft.Bot.Builder.Luis;
 
     [Serializable]
-    public class RootDialog : IDialog<object>
+    [LuisModel("40684170-88c7-498c-bf2e-14ef2524a7e6", "59bc8914b2174f76ab4d70f5764d90f9")]
+    public class RootDialog : LuisDialog<object>
     {
         public Task StartAsync(IDialogContext context)
         {
@@ -44,5 +46,20 @@ namespace StruggleBud.Dialogs
 
             context.Wait(this.WelcomeMessageReceivedAsync);
         }
+
+        [LuisIntent("Confirm")]
+        private async Task ConfirmationAsync(IDialogContext context, IAwaitable<object> result, LuisServiceResult luisResult)
+        {
+            // return our reply to the user
+            await context.PostAsync("Penis");
+        }
+
+        [LuisIntent("Abort")]
+        private async Task AbortAsync(IDialogContext context, IAwaitable<object> result, LuisServiceResult luisResult)
+        {
+            // return our reply to the user
+            await context.PostAsync("Dödel");
+        }
+
     }
 }
