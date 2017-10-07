@@ -11,6 +11,7 @@ namespace StruggleBud.Resources
         public const string BreakFastKey = "breakfast";
         public const string LunchKey = "lunch";
         public const string DinnerKey = "dinner";
+        public const string NameKey = "name";
         public const string SleepKey = "sleep";
 
 

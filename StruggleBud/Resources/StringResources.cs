@@ -68,5 +68,8 @@ namespace StruggleBud.Resources
 
 
         public const string NoTime = "Alles klar, dann halt nicht...das spart ordentlich Zeit";
+
+        public static string FinishWelcomeMessage(string name) =>
+            $"Okay {name}, wir haben den nervigen Teil Erledigt!. Hier nocheinmal eine Zusammenfassung:";
     }
 }
