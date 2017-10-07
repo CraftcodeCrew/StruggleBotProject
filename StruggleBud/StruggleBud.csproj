@@ -115,6 +115,8 @@
     <Compile Include="Controllers\MessagesController.cs" />
     <Compile Include="Dialogs\DataCollection\Calendar\CalendarDataCollectorDialog.cs" />
     <Compile Include="Dialogs\DataCollection\Habits\BreakfastDialog.cs" />
+    <Compile Include="Dialogs\DataCollection\Habits\DinnerLuisDialog..cs" />
+    <Compile Include="Dialogs\DataCollection\Habits\LunchLuisDialog.cs" />
     <Compile Include="Dialogs\DataCollection\Habits\BreakfastLuisDialog.cs" />
     <Compile Include="Dialogs\DataCollection\Habits\DinnerDialog.cs" />
     <Compile Include="Dialogs\DataCollection\Habits\LunchDialog.cs" />

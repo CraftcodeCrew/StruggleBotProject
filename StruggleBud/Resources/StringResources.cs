@@ -44,6 +44,15 @@ namespace StruggleBud.Resources
         public static string LunchConfirmationMessage(string time) =>
             $"Danke, ich notiere dir deine Mittagspause für {time} Uhr. Ist das OK so?";
 
+        public static string DinnerConfirmationMessage(string time) =>
+            $" Ich trage dir dein Abendessen für {time} Uhr ein. Ist das OK so?";
+
+        public const string DinnerNoMessage = "Schade... Ich hätte gerne mit dir zu Abend gegessen";
+
+        public const string DinnerDoneMessage = "Top! Weiter geht’s :-)";
+
+
+
         public const string NoLunchMessage = "Dude sicher... Essen ist wichtig?";
 
 
