@@ -9,6 +9,7 @@ namespace StruggleBud.Dialogs.Habits
 
     using Microsoft.Bot.Builder.Dialogs;
 
+    using StruggleBud.Dialogs.DataCollection.Habits;
     using StruggleBud.Resources;
 
     [Serializable]
@@ -45,11 +46,23 @@ namespace StruggleBud.Dialogs.Habits
                     context.UserData.SetValue(UserData.LunchKey, string.Empty);
                     break;
                 case SelectorConstants.LunchSelesctor5:
-                    context.Done(true);
+                    await CallLunchLuisDialogAsync(context);
                     break;
             }
 
             await AskUserForConfirmation(context, context.UserData.GetValue<string>(UserData.LunchKey));
+        }
+
+        private async Task SmartLunchFinishedAsync(IDialogContext context, IAwaitable<object> result)
+        {
+            await AskUserForConfirmation(context, context.UserData.GetValue<string>(UserData.BreakFastKey));
+        }
+
+        private Task CallLunchLuisDialogAsync(IDialogContext context)
+        {
+            context.Call(new LunchLuisDialog(), this.SmartLunchFinishedAsync);
+            return Task.CompletedTask;
+
         }
 
         private async Task AskUserForConfirmation(IDialogContext context, string time)
