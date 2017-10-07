@@ -23,12 +23,12 @@ namespace StruggleBud.Dialogs.DataCollection
             var breakfastTime = context.UserData.GetValue<string>(UserData.BreakFastKey);
             var lunchTime = context.UserData.GetValue<string>(UserData.LunchKey);
             var dinnerTime = context.UserData.GetValue<string>(UserData.DinnerKey);
-            var sleepTime = context.UserData.GetValue<string>("sleepTime");
+            var sleepTime = context.UserData.GetValue<string>(UserData.SleepKey);
 
-            var breakfastIsSet = string.IsNullOrEmpty(breakfastTime);
-            var lunchTimeIsSet = string.IsNullOrEmpty(lunchTime);
-            var dinnerTimeIsSet = string.IsNullOrEmpty(dinnerTime);
-            var sleepTimeIsSet = string.IsNullOrEmpty(sleepTime);
+            var breakfastIsSet = !string.IsNullOrEmpty(breakfastTime);
+            var lunchTimeIsSet = !string.IsNullOrEmpty(lunchTime);
+            var dinnerTimeIsSet = !string.IsNullOrEmpty(dinnerTime);
+            var sleepTimeIsSet = !string.IsNullOrEmpty(sleepTime);
 
 
             var builder = new StringBuilder();
@@ -55,6 +55,7 @@ namespace StruggleBud.Dialogs.DataCollection
                 builder.AppendLine("Kein Mittag für dich!");
             }
 
+            builder.AppendLine(string.Empty);
 
             if (dinnerTimeIsSet)
             {
@@ -67,16 +68,15 @@ namespace StruggleBud.Dialogs.DataCollection
 
             builder.AppendLine(string.Empty);
 
-            builder.AppendLine($"Zeit für die Falle ist um: _{dinnerTime}_");
+            builder.AppendLine($"Zeit für die Falle ist um: _{sleepTime}_");
 
             var card = new HeroCard()
                                       {
                                           Text = builder.ToString()
                                       };
 
-            IMessageActivity message = Activity.CreateMessageActivity();
-            message.Text = "StringResources.FinishWelcomeMessage(username)";
-            message.TextFormat = "plain";
+            IMessageActivity message = context.MakeMessage();
+            message.Text = StringResources.FinishWelcomeMessage(username);
             message.Locale = "de-De";
             
 

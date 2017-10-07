@@ -29,7 +29,13 @@ namespace StruggleBud.Dialogs.DataCollection
         {
             await context.PostAsync(StringResources.TimeBlockerMessage1);
 
-            context.Call(new RootHabitDialog(), this.EndOfHabitDataCollection);
+            context.Call(new RootHabitDialog(), this.ShowHabitOverView);
+        }
+
+        private Task ShowHabitOverView(IDialogContext context, IAwaitable<object> result)
+        {
+            context.Call(new FinishDataCollectionDialog(), this.EndOfHabitDataCollection);
+            return Task.CompletedTask;
         }
 
         private Task EndOfHabitDataCollection(IDialogContext context, IAwaitable<object> result)
