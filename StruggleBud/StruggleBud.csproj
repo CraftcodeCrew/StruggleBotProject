@@ -113,15 +113,16 @@
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\MessagesController.cs" />
-    <Compile Include="Dialogs\CalendarImportDialog.cs" />
-    <Compile Include="Dialogs\Habits\BreakfastDialog.cs" />
-    <Compile Include="Dialogs\Habits\DinnerDialog.cs" />
-    <Compile Include="Dialogs\Habits\LunchDialog.cs" />
-    <Compile Include="Dialogs\InitDialogs\CreationAbortDialog.cs" />
+    <Compile Include="Dialogs\DataCollection\Calendar\CalendarDataCollectorDialog.cs" />
+    <Compile Include="Dialogs\DataCollection\Habits\BreakfastDialog.cs" />
+    <Compile Include="Dialogs\DataCollection\Habits\DinnerDialog.cs" />
+    <Compile Include="Dialogs\DataCollection\Habits\LunchDialog.cs" />
+    <Compile Include="Dialogs\DataCollection\RootDataCollectionDialog.cs" />
+    <Compile Include="Dialogs\Exams\ExamDataCollectorDialog.cs" />
+    <Compile Include="Dialogs\Exams\LoopingExamDialog.cs" />
+    <Compile Include="Dialogs\ReusableDialogs\CreationAbortDialog.cs" />
     <Compile Include="Dialogs\Intelligence\NameDialog.cs" />
-    <Compile Include="Dialogs\ProfileSubmitDialog.cs" />
-    <Compile Include="Dialogs\Habits\SleepScheduleDialog.cs" />
-    <Compile Include="Dialogs\InitDialog.cs" />
+    <Compile Include="Dialogs\DataCollection\Habits\SleepScheduleDialog.cs" />
     <Compile Include="Dialogs\Intelligence\WelcomeLuisDialog.cs" />
     <Compile Include="Dialogs\RootDialog.cs" />
     <Compile Include="Global.asax.cs">
