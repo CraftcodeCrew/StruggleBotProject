@@ -56,7 +56,7 @@ namespace StruggleBud.Dialogs.Habits
 
         private async Task SmartDinnerFinishedAsync(IDialogContext context, IAwaitable<object> result)
         {
-            await AskUserForConfirmation(context, context.UserData.GetValue<string>(UserData.BreakFastKey));
+            await AskUserForConfirmation(context, context.UserData.GetValue<string>(UserData.DinnerKey));
         }
 
         private Task CallDinnerLuisDialogAsync(IDialogContext context)

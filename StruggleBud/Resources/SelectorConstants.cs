@@ -27,6 +27,14 @@ namespace StruggleBud.Resources
         public const String DinnerSelesctor4 = "Gar nicht";
         public const String DinnerSelesctor5 = "Manuelle Texteingabe";
 
+        public const String SleepSelesctor1 = "21:00 Uhr";
+        public const String SleepSelesctor2 = "22:00 Uhr";
+        public const String SleepSelesctor3 = "23:00 Uhr";
+        public const String SleepSelesctor4 = "Gar nicht";
+        public const String SleepSelesctor5 = "Manuelle Texteingabe";
+
+
+
 
     }
 }

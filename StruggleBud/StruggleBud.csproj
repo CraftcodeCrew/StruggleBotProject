@@ -121,6 +121,7 @@
     <Compile Include="Dialogs\DataCollection\Habits\DinnerDialog.cs" />
     <Compile Include="Dialogs\DataCollection\Habits\LunchDialog.cs" />
     <Compile Include="Dialogs\DataCollection\Habits\RootHabitDialog.cs" />
+    <Compile Include="Dialogs\DataCollection\Habits\SleepLuisDialog.cs" />
     <Compile Include="Dialogs\DataCollection\RootDataCollectionDialog.cs" />
     <Compile Include="Dialogs\Exams\ExamDataCollectorDialog.cs" />
     <Compile Include="Dialogs\Exams\LoopingExamDialog.cs" />
