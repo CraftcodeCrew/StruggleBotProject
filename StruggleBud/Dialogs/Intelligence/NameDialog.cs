@@ -31,7 +31,7 @@ namespace StruggleBud.Dialogs.Intelligence
             }
 
             // return our reply to the user
-            context.UserData.SetValue("name", name);
+            context.UserData.SetValue(UserData.NameKey, name);
 
            context.Done(true);
         }

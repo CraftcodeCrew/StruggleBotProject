@@ -114,6 +114,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\MessagesController.cs" />
     <Compile Include="Dialogs\DataCollection\Calendar\CalendarDataCollectorDialog.cs" />
+    <Compile Include="Dialogs\DataCollection\FinishDataCollectionDialog.cs" />
     <Compile Include="Dialogs\DataCollection\Habits\BreakfastDialog.cs" />
     <Compile Include="Dialogs\DataCollection\Habits\DinnerLuisDialog..cs" />
     <Compile Include="Dialogs\DataCollection\Habits\LunchLuisDialog.cs" />
