@@ -18,5 +18,11 @@ namespace StruggleBud.Resources
 
         public const string Unkown = "Sorry, das habe ich nicht verstanden"
             ;
+
+        public const string CreationAboard1 = "Wie kann ich dir sonst weiterhelfen?";
+
+        public const string CreationAboard2 = "Kannste knicken! Willst du jetzt einen Studienplan anlegen?";
+
+
     }
 }

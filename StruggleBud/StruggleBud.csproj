@@ -117,6 +117,7 @@
     <Compile Include="Dialogs\Habits\BreakfastDialog.cs" />
     <Compile Include="Dialogs\Habits\DinnerDialog.cs" />
     <Compile Include="Dialogs\Habits\LunchDialog.cs" />
+    <Compile Include="Dialogs\InitDialogs\CreationAbortDialog.cs" />
     <Compile Include="Dialogs\Intelligence\NameDialog.cs" />
     <Compile Include="Dialogs\ProfileSubmitDialog.cs" />
     <Compile Include="Dialogs\Habits\SleepScheduleDialog.cs" />

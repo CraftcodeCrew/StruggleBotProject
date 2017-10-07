@@ -10,6 +10,7 @@ namespace StruggleBud.Dialogs
     using StruggleBud.Resources;
     using Microsoft.Bot.Builder.Luis;
 
+    using StruggleBud.Dialogs.InitDialogs;
     using StruggleBud.Dialogs.Intelligence;
 
     [Serializable]
@@ -29,11 +30,39 @@ namespace StruggleBud.Dialogs
             await context.PostAsync(StringResources.WelcomeMessage2);
 
             context.Call(new NameDialog(), this.NameReceivedAsync);
+
+
         }
 
         private async Task NameReceivedAsync(IDialogContext context, IAwaitable<object> result)
         {
-           context.Call(new WelcomeLuisDialog(), this.WelcomeMessageReceivedAsync);
+            var name = context.UserData.GetValue<string>("name");
+
+            PromptDialog.Choice(
+                context,
+                this.AfterUserHasBeenAskForCreation,
+                new[] { "Ja", "Nein" },
+                StringResources.WelcomeMessage3(name),
+                StringResources.Unkown);
+        }
+
+
+        private async Task AfterUserHasBeenAskForCreation(IDialogContext context, IAwaitable<object> result)
+        {
+                var selection = await result;
+
+                switch (selection)
+                {
+                    case "Ja":
+                        await context.PostAsync("This functionality is not yet implemented! Try resetting your password.");
+                        await this.StartAsync(context);
+                        break;
+
+                    case "Nein":
+                        context.Call(new CreationAbortDialog(), this.AfterUserHasBeenAskForCreation);
+                        break;
+                }
+          
         }
 
     }
