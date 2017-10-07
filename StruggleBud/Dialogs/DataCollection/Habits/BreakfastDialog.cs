@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Threading.Tasks;
 using StruggleBud.Resources;
+using StruggleBud.Dialogs.DataCollection.Habits;
 
 namespace StruggleBud.Dialogs.Habits
 {
@@ -48,17 +49,30 @@ namespace StruggleBud.Dialogs.Habits
                     context.UserData.SetValue(UserData.BreakFastKey, selection);
                     break;
                 case SelectorConstants.BreakfastSelector5:
+                    //TODO user output
+                    context.UserData.SetValue(UserData.BreakFastKey, selection);
                     break;
                 case SelectorConstants.BreakfastSelector6:
-                    context.Done(true);
-                    break;                  
-
-                default:
-                    context.Done(true);
-                    break;
+                    await CallBreakFastLuisDialogAsync(context, result);
+                    break;                 
               
             }
             context.Done(true);
+        }
+
+        private Task CallBreakFastLuisDialogAsync(IDialogContext context, IAwaitable<object> result)
+        {
+            context.Call(new BreakfastLuisDialog(), this.BreakFastDoneAsync);
+            return Task.CompletedTask;
+            
+        }
+
+        private Task BreakFastDoneAsync(IDialogContext context, IAwaitable<object> result)
+        {
+            context.PostAsync(StringResources.BreakfastTimeSetMessage);
+            context.PostAsync(StringResources.BreakfastConfirmationMessage);
+            context.Done(true);
+            return Task.CompletedTask;
         }
     }
 }
