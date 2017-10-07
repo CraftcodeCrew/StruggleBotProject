@@ -14,23 +14,51 @@ namespace StruggleBud.Dialogs.Habits
     {
         public Task StartAsync(IDialogContext context)
         {
-            context.Wait(this.TimeBlockerMessageReceivedAsync);
+            context.Wait(this.BreakfastTimeSelectorAsync);
 
             return Task.CompletedTask;
         }
 
-        private async Task TimeBlockerMessageReceivedAsync(IDialogContext context, IAwaitable<object> result)
+        private async Task BreakfastTimeSelectorAsync(IDialogContext context, IAwaitable<object> result)
         {
-            await context.PostAsync(StringResources.WelcomeMessage1);
-            await Task.Delay(1000);
-            await context.PostAsync(StringResources.WelcomeMessage2);
-
-            context.Call(new BreakfastTimesLuisDialog(), this.BreakfastTimesReceivedAsync);
+            PromptDialog.Choice(
+                context,
+                this.BreakfastTimeReceivedAsync,
+                new[] {SelectorConstants.BreakfastSelector1, SelectorConstants.BreakfastSelector2, SelectorConstants.BreakfastSelector3, SelectorConstants.BreakfastSelector4,
+                SelectorConstants.BreakfastSelector5, SelectorConstants.BreakfastSelector6},
+                StringResources.BreakfastTimeBlockerMessage,
+                StringResources.Unkown);
         }
 
-        private async Task BreakfastTimesReceivedAsync(IDialogContext context, IAwaitable<object> result)
+        private async Task BreakfastTimeReceivedAsync(IDialogContext context, IAwaitable<object> result)
         {
-            throw new NotImplementedException();
+            var selection = await result;
+
+            switch (selection)
+            {
+                case SelectorConstants.BreakfastSelector1:
+                    context.UserData.SetValue(UserData.BreakFastKey, selection);
+                    break;
+                case SelectorConstants.BreakfastSelector2:
+                    context.UserData.SetValue(UserData.BreakFastKey, selection);
+                    break;
+                case SelectorConstants.BreakfastSelector3:
+                    context.UserData.SetValue(UserData.BreakFastKey, selection);
+                    break;
+                case SelectorConstants.BreakfastSelector4:
+                    context.UserData.SetValue(UserData.BreakFastKey, selection);
+                    break;
+                case SelectorConstants.BreakfastSelector5:
+                    break;
+                case SelectorConstants.BreakfastSelector6:
+                    throw new NotImplementedException();
+                    break;
+
+                default: throw new NotImplementedException();
+                
+              
+            }
+            context.Done(true);
         }
     }
 }

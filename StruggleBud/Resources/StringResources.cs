@@ -25,8 +25,12 @@ namespace StruggleBud.Resources
 
 
 
-        public static string TimeBlockerMessage1() => "Du willst ja nicht immer lernen, oder? Lass uns zunächst deine täglichen Mahlzeiten eintragen.";
-        public static string BreakfastTimeBlockerMessage() => "Das Frühstück ist die wichtigste Mahlzeit des Tages. Um wieviel Uhr frühstückst du normalerweise?";
-        public static string InvalidBreakfastMessage() => "Das habe ich nicht ganz verstanden. Schreib am Besten die Uhrzeit in dem Format hh:mm, oder nutze einfach eine unserer Antwortmöglichkeiten.";
+        public const string TimeBlockerMessage1 = "Du willst ja nicht immer lernen, oder? Lass uns zunächst deine täglichen Mahlzeiten eintragen.";
+        public const string BreakfastTimeBlockerMessage = "Das Frühstück ist die wichtigste Mahlzeit des Tages. Um wieviel Uhr frühstückst du normalerweise?";
+        public const string InvalidBreakfastMessage = "Das habe ich nicht ganz verstanden. Schreib am Besten die Uhrzeit in dem Format hh:mm, oder nutze einfach eine unserer Antwortmöglichkeiten.";
+        public const string NoBreakfastMessage = "Alles klar, dann halt nicht...das spart ordentlich Zeit.";
+        public const string BreakfastTimeSetMessage = "Der frühe Vogel fängt den Wurm. Ich blocke dir dann von (%d) bis (%d+1h) Uhr für dein Frühstück.Ist das OK so?";
+        public const string BreakfastConfirmationMessage = "Top! Weiter geht’s :-)";
+
     }
 }

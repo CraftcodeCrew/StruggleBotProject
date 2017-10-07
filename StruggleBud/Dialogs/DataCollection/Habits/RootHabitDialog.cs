@@ -10,23 +10,23 @@ using StruggleBud.Dialogs.Habits;
 namespace StruggleBud.Dialogs.DataCollection
 {
     [Serializable]
-    public class RootDataCollectionDialog : IDialog<object>
+    public class RootHabitDialog : IDialog<object>
     {
         public Task StartAsync(IDialogContext context)
         {
-            context.Wait(this.StartHabitDataCollectionAsync);
+            context.Wait(this.StartBreakfastDataCollectionAsync);
 
             return Task.CompletedTask;
         }
 
-        private async Task StartHabitDataCollectionAsync(IDialogContext context, IAwaitable<object> result)
+        private async Task StartBreakfastDataCollectionAsync(IDialogContext context, IAwaitable<object> result)
         {
-            await context.PostAsync(StringResources.TimeBlockerMessage1);
+            await context.PostAsync(StringResources.BreakfastTimeBlockerMessage);
 
-            context.Call(new RootHabitDialog(), this.StartLunchDataCollectionAsync);
+            context.Call(new BreakfastDialog(), this.StartLunchDataCollectionAsync);
         }
 
-        private Task StartLunchDataCollectionAsync(IDialogContext context, IAwaitable<object> result)
+        private async Task StartLunchDataCollectionAsync(IDialogContext context, IAwaitable<object> result)
         {
             throw new NotImplementedException();
         }
