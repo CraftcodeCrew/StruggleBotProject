@@ -49,6 +49,8 @@ namespace StruggleBud.Resources
 
         public const string DinnerWelcomeMessage = "Für wann soll ich dir dein Abendessen am Besten einplanen?";
 
+        public const string SleepScheduleWelcomeMessage = "Nach getaner Arbeit freust du dich auf den wohlverdienten Schlaf. Um wie viel Uhr gehst du denn normalerweise zu Bett?";
+
         public const string NoTime = "Alles klar, dann halt nicht...das spart ordentlich Zeit";
     }
 }

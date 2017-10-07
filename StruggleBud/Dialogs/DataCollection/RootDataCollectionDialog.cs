@@ -23,17 +23,16 @@ namespace StruggleBud.Dialogs.DataCollection
         private async Task CalenderDataCollectionCompletedAsync(IDialogContext context, IAwaitable<object> result)
         {
             await StartHabitDataCollectionAsync(context, result);
-
         }
 
         private async Task StartHabitDataCollectionAsync(IDialogContext context, IAwaitable<object> result)
         {
             await context.PostAsync(StringResources.TimeBlockerMessage1);
 
-            context.Call(new RootHabitDialog(), this.StartLunchDataCollectionAsync);
+            context.Call(new RootHabitDialog(), this.EndOfHabitDataCollection);
         }
 
-        private Task StartLunchDataCollectionAsync(IDialogContext context, IAwaitable<object> result)
+        private Task EndOfHabitDataCollection(IDialogContext context, IAwaitable<object> result)
         {
             context.Done(true);
             return Task.CompletedTask;

@@ -24,7 +24,21 @@ namespace StruggleBud.Dialogs.DataCollection
             return Task.CompletedTask;
         }
 
-        private Task StartDinnerDataCollectionAsync(IDialogContext context, IAwaitable<object> result)
+        private async Task StartDinnerDataCollectionAsync(IDialogContext context, IAwaitable<object> result)
+        {
+            await context.PostAsync(StringResources.DinnerWelcomeMessage);
+
+            context.Call(new DinnerDialog(), this.StartSleepScheduleDataCollectionAsync);
+        }
+
+        private async Task StartSleepScheduleDataCollectionAsync(IDialogContext context, IAwaitable<object> result)
+        {
+            await context.PostAsync(StringResources.SleepScheduleWelcomeMessage);
+
+            context.Call(new SleepScheduleDialog(), this.EndOfHabitDataCollectionAsync);
+        }
+
+        private Task EndOfHabitDataCollectionAsync(IDialogContext context, IAwaitable<object> result)
         {
             context.Done(true);
             return Task.CompletedTask;
