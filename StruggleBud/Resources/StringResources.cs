@@ -19,6 +19,12 @@ namespace StruggleBud.Resources
         public const string Unkown = "Sorry, das habe ich nicht verstanden"
             ;
 
+        public const string CreationAboard1 = "Wie kann ich dir sonst weiterhelfen?";
+
+        public const string CreationAboard2 = "Kannste knicken! Willst du jetzt einen Studienplan anlegen?";
+
+
+
         public static string TimeBlockerMessage1() => "Du willst ja nicht immer lernen, oder? Lass uns zunächst deine täglichen Mahlzeiten eintragen.";
         public static string BreakfastTimeBlockerMessage() => "Das Frühstück ist die wichtigste Mahlzeit des Tages. Um wieviel Uhr frühstückst du normalerweise?";
         public static string InvalidBreakfastMessage() => "Das habe ich nicht ganz verstanden. Schreib am Besten die Uhrzeit in dem Format hh:mm, oder nutze einfach eine unserer Antwortmöglichkeiten.";

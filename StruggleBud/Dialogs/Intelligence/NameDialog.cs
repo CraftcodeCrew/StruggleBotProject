@@ -31,7 +31,7 @@ namespace StruggleBud.Dialogs.Intelligence
             }
 
             // return our reply to the user
-            await context.PostAsync(StringResources.WelcomeMessage3(name));
+            context.UserData.SetValue("name", name);
 
            context.Done(true);
         }
