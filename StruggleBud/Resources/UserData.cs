@@ -20,6 +20,9 @@ namespace StruggleBud.Resources
 
         public const string ExamDurations = "duration";
 
+        public const string UserCalenderToken = "calenderToken";
+
+
 
     }
 }

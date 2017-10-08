@@ -21,7 +21,7 @@ namespace StruggleBud.Dialogs.InitDialogs
             context.Wait(this.WaitForBullshit);
         }
 
-        private async Task WaitForBullshit(IDialogContext context, IAwaitable<object> result)
+        private  Task WaitForBullshit(IDialogContext context, IAwaitable<object> result)
         {
 
             PromptDialog.Choice(
@@ -30,6 +30,8 @@ namespace StruggleBud.Dialogs.InitDialogs
                 new[] { "Ja", "Nein" },
                 StringResources.CreationAboard2,
                 StringResources.Unkown);
+
+            return Task.CompletedTask;
         }
 
         private async Task AfterSelection(IDialogContext context, IAwaitable<object> result)

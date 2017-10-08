@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 // Navigates back to RootDataCollectionDialog
 namespace StruggleBud.Dialogs.DataCollection.Calendar
 {
+    using Microsoft.Bot.Connector;
+    using StruggleApplication.framework;
     using StruggleBud.Resources;
 
     [Serializable]
@@ -17,17 +19,24 @@ namespace StruggleBud.Dialogs.DataCollection.Calendar
         {
             await context.PostAsync(StringResources.CalenderAccess);
 
-            var calenderApiAccess = true;
+            var apiAccessPoint = new GoogleCalendarInstance();
+            var link = apiAccessPoint.GenerateAuthLink();
+            context.UserData.SetValue<GoogleCalendarInstance>(UserData.UserCalenderToken, apiAccessPoint);
 
-            if (calenderApiAccess == false)
-            {
-                await context.PostAsync(StringResources.CalenderAccessFailed);
-                await this.StartAsync(context);
-            }
-            else
-            {
-                context.Done(true);
-            }
+            await context.PostAsync(link);
+
+            context.Wait(this.AuthLinkRecevied);
+
+        }
+
+        private async Task AuthLinkRecevied(IDialogContext context, IAwaitable<object> result)
+        {
+            var activity = await result as Activity;
+            var apiAccessPoint = context.UserData.GetValue<GoogleCalendarInstance>(UserData.UserCalenderToken);
+
+            await apiAccessPoint.Initialize(activity.Text);
+            context.Done(true);
+
         }
     }
 }

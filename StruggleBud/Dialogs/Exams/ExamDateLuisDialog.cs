@@ -19,7 +19,8 @@ namespace StruggleBud.Dialogs.DataCollection.Habits
         [LuisIntent("Datetime")]
         private Task ExamDateInput(IDialogContext context, IAwaitable<object> result, Microsoft.Bot.Builder.Luis.Models.LuisResult luisResult)
         {
-            var date = luisResult.Entities[0].Entity;
+          
+            var date = luisResult.Entities[luisResult.Entities.Count - 1].Entity;
 
             var list = new List<string>();
 
@@ -38,7 +39,7 @@ namespace StruggleBud.Dialogs.DataCollection.Habits
         }
 
         [LuisIntent("")]
-        private async Task AbortAsync(IDialogContext context, IAwaitable<object> result, Microsoft.Bot.Builder.Luis.Models.LuisResult luisResult)
+        private Task AbortAsync(IDialogContext context, IAwaitable<object> result, Microsoft.Bot.Builder.Luis.Models.LuisResult luisResult)
         {
              PromptDialog.Choice(
                context,
@@ -46,6 +47,8 @@ namespace StruggleBud.Dialogs.DataCollection.Habits
                new[] { SelectorConstants.DateFallBackSelectio1, SelectorConstants.DateFallBackSelectio2},
                StringResources.FallbackMessage,
                StringResources.Unkown);
+
+            return Task.CompletedTask;
         }
 
         private async Task FallbackSelected(IDialogContext context, IAwaitable<object> result)

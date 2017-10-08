@@ -47,7 +47,7 @@ namespace StruggleBud.Dialogs.DataCollection.Habits
           
         }
 
-        private async Task SwitchToFallback(IDialogContext context)
+        private  Task SwitchToFallback(IDialogContext context)
         {
             PromptDialog.Choice(
               context,
@@ -55,6 +55,8 @@ namespace StruggleBud.Dialogs.DataCollection.Habits
               new[] { SelectorConstants.SubjectFallBackSelectio1, SelectorConstants.SubjectFallBackSelectio2 },
               StringResources.FallbackMessage,
               StringResources.Unkown);
+
+            return Task.CompletedTask;
         }
 
         private async Task FallbackSelected(IDialogContext context, IAwaitable<object> result)

@@ -18,7 +18,7 @@ namespace StruggleBud.Dialogs.Habits
             await this.BreakfastTimeSelectorAsync(context, null);
         }
 
-        private async Task BreakfastTimeSelectorAsync(IDialogContext context, IAwaitable<object> result)
+        private  Task BreakfastTimeSelectorAsync(IDialogContext context, IAwaitable<object> result)
         {
             PromptDialog.Choice(
                 context,
@@ -27,6 +27,7 @@ namespace StruggleBud.Dialogs.Habits
                 SelectorConstants.BreakfastSelector5, SelectorConstants.BreakfastSelector6},
                 StringResources.BreakfastTimeBlockerMessage,
                 StringResources.Unkown);
+            return Task.CompletedTask;
         }
 
         private async Task BreakfastTimeReceivedAsync(IDialogContext context, IAwaitable<object> result)
@@ -72,7 +73,7 @@ namespace StruggleBud.Dialogs.Habits
         }
 
 
-        private async Task AskUserForConfirmation(IDialogContext context, string time)
+        private Task AskUserForConfirmation(IDialogContext context, string time)
         {
             var question = StringResources.BreakfastTimeSetMessage(time);
             if (string.IsNullOrEmpty(time))
@@ -86,6 +87,8 @@ namespace StruggleBud.Dialogs.Habits
                 new[] { "Ja", "Nein" },
                 question,
                 StringResources.Unkown);
+
+            return Task.CompletedTask;
         }
 
         private async Task SelectionReceivedAsync(IDialogContext context, IAwaitable<object> result)

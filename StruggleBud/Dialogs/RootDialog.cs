@@ -34,7 +34,7 @@ namespace StruggleBud.Dialogs
 
         }
 
-        private async Task NameReceivedAsync(IDialogContext context, IAwaitable<object> result)
+        private Task NameReceivedAsync(IDialogContext context, IAwaitable<object> result)
         {
             var name = context.UserData.GetValue<string>("name");
 
@@ -44,6 +44,8 @@ namespace StruggleBud.Dialogs
                 new[] { "Ja", "Nein" },
                 StringResources.WelcomeMessage3(name),
                 StringResources.Unkown);
+
+            return Task.CompletedTask;
         }
 
 
@@ -63,14 +65,31 @@ namespace StruggleBud.Dialogs
                 }
         }
 
-        private async Task NavigateToDataCollection(IDialogContext context, IAwaitable<object> result)
+        private Task NavigateToDataCollection(IDialogContext context, IAwaitable<object> result)
         {
             context.Call(new StruggleBud.Dialogs.DataCollection.RootDataCollectionDialog(), this.NavigateToExamCollection);
+            return Task.CompletedTask;
         }
 
-        private async Task NavigateToExamCollection(IDialogContext context, IAwaitable<object> result)
+        private  Task NavigateToExamCollection(IDialogContext context, IAwaitable<object> result)
         {
-            context.Call(new StruggleBud.Dialogs.Exams.ExamDataCollectorDialog(), this.WelcomeMessageReceivedAsync);
+            context.Call(new StruggleBud.Dialogs.Exams.ExamDataCollectorDialog(), this.NavigateToResult);
+
+            return Task.CompletedTask;
+        }
+
+        private Task NavigateToResult(IDialogContext context, IAwaitable<object> result)
+        {
+            context.Call(new ResultDialog(), this.Restart);
+
+            return Task.CompletedTask;
+        }
+
+        private Task Restart(IDialogContext context, IAwaitable<object> result)
+        {
+            context.UserData.Clear();
+            this.StartAsync(context);
+            return Task.CompletedTask;
         }
 
     }

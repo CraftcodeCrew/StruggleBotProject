@@ -40,7 +40,7 @@ namespace StruggleBud.Dialogs.DataCollection.Habits
         }
 
         [LuisIntent("")]
-        private async Task AbortAsync(IDialogContext context, IAwaitable<object> result, Microsoft.Bot.Builder.Luis.Models.LuisResult luisResult)
+        private Task AbortAsync(IDialogContext context, IAwaitable<object> result, Microsoft.Bot.Builder.Luis.Models.LuisResult luisResult)
         {
             PromptDialog.Choice(
               context,
@@ -48,6 +48,8 @@ namespace StruggleBud.Dialogs.DataCollection.Habits
               new[] { SelectorConstants.PowerFallBackSelectio1, SelectorConstants.PowerFallBackSelectio2 },
               StringResources.FallbackMessage,
               StringResources.Unkown);
+
+            return Task.CompletedTask;
         }
 
         private async Task FallbackSelected(IDialogContext context, IAwaitable<object> result)

@@ -88,5 +88,7 @@ namespace StruggleBud.Resources
         public const string FallbackSkio = "Okay mate! Versuche es nocheinmal";
 
         public const string FallbackMessage = "Mate, das ist übel... Willst du es vlt. nochmal versuchen";
+
+        public const string Result = "Dude... Dude... ich habe dein Kalender gefüllt :O";
     }
 }

@@ -15,7 +15,7 @@ namespace StruggleBud.Dialogs.Habits
     [Serializable]
     public class LunchDialog : IDialog<object>
     {
-        public async Task StartAsync(IDialogContext context)
+        public  Task StartAsync(IDialogContext context)
         {
             PromptDialog.Choice(
                 context,
@@ -24,6 +24,8 @@ namespace StruggleBud.Dialogs.Habits
                           SelectorConstants.LunchSelesctor5},
                 StringResources.LaunchWelcomeMessage,
                 StringResources.Unkown);
+
+            return Task.CompletedTask;
         }
 
         private async Task LunchTimeReceivedAsync(IDialogContext context, IAwaitable<object> result)
@@ -65,7 +67,7 @@ namespace StruggleBud.Dialogs.Habits
 
         }
 
-        private async Task AskUserForConfirmation(IDialogContext context, string time)
+        private Task AskUserForConfirmation(IDialogContext context, string time)
         {
             var question = StringResources.LunchConfirmationMessage(time);
             if (string.IsNullOrEmpty(time))
@@ -79,6 +81,8 @@ namespace StruggleBud.Dialogs.Habits
                 new[] {"Ja", "Nein"},
                 question,
                 StringResources.Unkown);
+
+            return Task.CompletedTask;
         }
 
         private async Task SelectionReceivedAsync(IDialogContext context, IAwaitable<object> result)

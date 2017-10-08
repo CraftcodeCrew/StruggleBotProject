@@ -17,7 +17,7 @@ namespace StruggleBud.Dialogs.Exams
             await ConfirmExamEnteringLoop(context);
         }
 
-        private async Task ConfirmExamEnteringLoop(IDialogContext context)
+        private  Task ConfirmExamEnteringLoop(IDialogContext context)
         {
             PromptDialog.Choice(
                 context,
@@ -25,6 +25,8 @@ namespace StruggleBud.Dialogs.Exams
                 new[] { "Ja", "Nein" },
                 StringResources.ExamWelcomeMessage,
                 StringResources.Unkown);
+
+            return Task.CompletedTask;
         }
 
         private async Task SelectionReceivedAsync(IDialogContext context, IAwaitable<object> result)
