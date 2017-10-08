@@ -34,11 +34,16 @@ namespace StruggleBud.Dialogs
             var powerInMiunutes = Int32.Parse(rawPower) * 60;
             var durationInMinutesPerDay = (Int32.Parse(rawDuration) * 60) / 5;
 
-            var planer = new StruggleApplication.domain.Planner(context.UserData.GetValue<StruggleApplication.framework.GoogleCalendarInstance>(UserData.UserCalenderToken));
 
             var EndDate = DateTime.Parse(rawEndDate);
 
-            planer.planExamPreparation(startDate, EndDate, rawSubject, powerInMiunutes, durationInMinutesPerDay);
+            try {
+                var planer = new StruggleApplication.domain.Planner(context.UserData.GetValue<StruggleApplication.framework.GoogleCalendarInstance>(UserData.UserCalenderToken));
+                planer.planExamPreparation(startDate, EndDate, rawSubject, powerInMiunutes, durationInMinutesPerDay);
+            } catch(Exception)
+            {
+                //ignored
+            }
 
             return Task.CompletedTask;
         }
