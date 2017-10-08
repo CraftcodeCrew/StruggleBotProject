@@ -48,7 +48,6 @@ namespace StruggleBud.Dialogs.DataCollection.Habits
               new[] { SelectorConstants.PowerFallBackSelectio1, SelectorConstants.PowerFallBackSelectio2 },
               StringResources.FallbackMessage,
               StringResources.Unkown);
-            await context.PostAsync(StringResources.CalenderAccessFailed);
         }
 
         private async Task FallbackSelected(IDialogContext context, IAwaitable<object> result)

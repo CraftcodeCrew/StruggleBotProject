@@ -41,8 +41,7 @@ namespace StruggleBud.Dialogs.Exams
             PromptDialog.Choice(
                context,
                this.ExamDurationPicked,
-               new[] {SelectorConstants.ExamDurationSelector1, SelectorConstants.ExamDurationSelector2, SelectorConstants.ExamDurationSelector3, SelectorConstants.ExamDurationSelector4,
-                          SelectorConstants.LunchSelesctor5},
+               new[] {SelectorConstants.ExamDurationSelector1, SelectorConstants.ExamDurationSelector2, SelectorConstants.ExamDurationSelector3, SelectorConstants.ExamDurationSelector4},
                StringResources.ExamLoop6,
                StringResources.Unkown);
 
@@ -58,7 +57,7 @@ namespace StruggleBud.Dialogs.Exams
                 {
                     case SelectorConstants.ExamDurationSelector1:
                          await context.PostAsync(StringResources.ExamLoop5);
-                        context.UserData.SetValue(UserData.LunchKey, "10h");
+                        UserDataUtility.AddDurationToUserData(context, "10h");
                         break;
                     case SelectorConstants.ExamDurationSelector2:
                         UserDataUtility.AddDurationToUserData(context, selection as string);
@@ -78,7 +77,7 @@ namespace StruggleBud.Dialogs.Exams
             await AskUserForConfirmation(context);
         }
 
-        private async Task AskUserForConfirmation(IDialogContext context)
+        private Task AskUserForConfirmation(IDialogContext context)
         {
             var date = context.UserData.GetValue<List<string>>(UserData.ExamDates).Last();
             var power = context.UserData.GetValue<List<string>>(UserData.ExamPowers).Last();
@@ -87,10 +86,12 @@ namespace StruggleBud.Dialogs.Exams
 
             PromptDialog.Choice(
              context,
-             this.ExamDurationPicked,
+             this.ExamCompletedConformatation,
              new[] {"Ja", "Nein"},
              StringResources.ExamLoop7(date,power,subject,duration),
              StringResources.Unkown);
+
+            return Task.CompletedTask;
         }
 
         private async Task ExamCompletedConformatation(IDialogContext context, IAwaitable<object> result)
