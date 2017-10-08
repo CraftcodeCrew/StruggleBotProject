@@ -7,8 +7,8 @@ namespace StruggleBud.Resources
 {
     public class StringResources
     {
-        public const string WelcomeMessage1 = "Hi! Ich freue mich, dass du zu mir gefunden hast. Ich bin dein StruggleBud und unterstütze dich bei deiner persönlichen Lernvorbereitung.";
-        public const string WelcomeMessage2 = "Damit ich dich in Zukunft richtig anspreche brauche ich deinen Namen. Wie heißt du?";
+        public const string WelcomeMessage1 = "Hi! Ich freue mich, dass du zu mir gefunden hast. Ich bin dein StuddyBuddy und unterstütze dich bei deiner persönlichen Lernvorbereitung.";
+        public const string WelcomeMessage2 = "Damit ich dich in Zukunft richtig ansprechen kann, brauche ich deinen Namen. Wie heißt du?";
         public static string WelcomeMessage3(string name) => $"Hallo, {name} ich habe noch keinen Studienplan von für dich. Soll ich einen anlegen?";
 
         public const string Unkown = "Sorry, das habe ich nicht verstanden";
@@ -17,7 +17,7 @@ namespace StruggleBud.Resources
         public const string CreationAboard2 = "Kannste knicken! Willst du jetzt einen Studienplan anlegen?";
 
         public const string CalenderAccess =
-                "Damit ich dir wirklich helfen kann, benötige ich Zugriff auf deinen Kalender. Klicke dafür einfach auf folgenden Link und erteile mir deine Erlaubnis"
+                "Damit ich dir wirklich helfen kann, benötige ich Zugriff auf deinen Kalender. Klicke dafür einfach auf folgenden Link und erteile mir deine Erlaubnis. Sende mir anschließend den Aktivierungscode zurück."
             ;
         public const string CalenderAccessFailed = "Irgendwas ist schiefgelaufen. Kannst du es normal versuchen?"
             ;
@@ -60,10 +60,10 @@ namespace StruggleBud.Resources
         public const string SleepScheduleWelcomeMessage = "Nach getaner Arbeit freust du dich auf den wohlverdienten Schlaf. Um wie viel Uhr gehst du denn normalerweise zu Bett?";
 
 
-        public const string NoTime = "Alles klar, dann halt nicht...das spart ordentlich Zeit";
+        public const string NoTime = "Alles klar, dann halt nicht... Das spart ordentlich Zeit!";
 
         public static string FinishWelcomeMessage(string name) =>
-            $"Okay {name}, wir haben den nervigen Teil Erledigt!. Hier nocheinmal eine Zusammenfassung:";
+            $"Okay {name}, wir haben den nervigen Teil Erledigt! Hier nocheinmal eine Zusammenfassung:";
 
 
         public const string ExamWelcomeMessage = "Wollen wir zusammen deine Lernzeiten planen?";
